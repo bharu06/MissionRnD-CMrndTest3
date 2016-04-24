@@ -1,5 +1,6 @@
 #include "stdafx.h";
 #include <stdlib.h>;
+#include<stdio.h>
 #include "./../src/Problem1.cpp";
 
 using namespace System;
@@ -65,6 +66,7 @@ namespace spec
 		void test_Problem1_spec(int *arr, int len,int actual_len,int ans){
 			struct node *root = constructBinaryTree_spec(arr, len);
 			int actual = get_missing_value(root, actual_len);
+			//printf("%d", actual);
 			Assert::AreEqual(ans, actual, L"Failed sample 0 for NULL case in P1", 1, 2);
 		}
 		[TestMethod, Timeout(1000)]

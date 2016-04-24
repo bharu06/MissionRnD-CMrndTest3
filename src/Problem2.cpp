@@ -70,7 +70,30 @@ struct node{
 	struct node *left;
 	struct node *right;
 };
+int no_nodes(struct node *root,int nodes)
+
+{
+	if (root == NULL)
+	{
+		return nodes;
+	}
+	else
+	{
+		nodes = no_nodes(root->left, nodes);
+		nodes++;
+		nodes = no_nodes(root->right, nodes );
+		return nodes;
+	}
+
+}
+
 
 int is_identical(struct node_dll *head, struct node *root){
-	return -1;
+	if(root==NULL||head==NULL)return -1;
+	else
+	{
+	//	int nodes = no_nodes(root);
+	//	int arr[nodes + 1];
+
+	}
 }

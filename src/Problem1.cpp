@@ -50,7 +50,68 @@ struct node{
 	struct node *right;
 };
 
+int get_missing(struct node *root, int num)
+{
+	if (root == NULL)
+	{
+		return 0;
+	}
+	else if (root->data == num)
+	{
+		return 1;
+	}
+	else
+	{
+		int x = get_missing(root->left, num);
+		int y = get_missing(root->right, num);
+		if (x == 1 || y == 1)
+		{
+			return 1;
+		}
 
+		return 0;
+	}
+		
+			
+
+}
 int get_missing_value(struct node *root,int n){
-    return -1;
+	if (root == NULL || n <= 0)
+	{
+		return -1;
+	}
+	else
+	{
+		if (n > 0){
+			for (int i = 0; i <= n; i++)
+			{
+				int k = get_missing(root, i);
+				printf("%2d", k);
+				if (k == 0)
+				{
+
+					return i;
+				}
+
+
+			}
+			return -1;
+		}
+		else
+		{
+			for (int i = n; i<=0; i++)
+			{
+				int k = get_missing(root, i);
+				printf("%2d", k);
+				if (k == 0)
+				{
+
+					return i;
+				}
+
+
+			}
+			return -1;
+		}
+	}
 }
