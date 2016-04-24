@@ -117,7 +117,7 @@ int is_identical(struct node_dll *head, struct node *root){
 			printf("%2d%2d\n", a[i], head->data);
 			if (head == NULL)
 			{
-				return 1;
+				return 0;
 			}
 			if (a[i] == head->data)
 			{
