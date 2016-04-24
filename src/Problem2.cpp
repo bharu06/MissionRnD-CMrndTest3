@@ -86,14 +86,47 @@ int no_nodes(struct node *root,int nodes)
 	}
 
 }
+int inorder_helper(struct node *root, int *arr, int i)
+{
+	if (root == NULL)
+	{
+		return i;
+	}
+	else
+	{
+		//
+		i = inorder_helper(root->left, arr, i);
+		//printf("%d", root->data);
+		arr[i++] = root->data; //printf("%d", arr[i]);
+		i = inorder_helper(root->right, arr, i);
+		return i;
+	}
+
+}
 
 
 int is_identical(struct node_dll *head, struct node *root){
 	if(root==NULL||head==NULL)return -1;
 	else
 	{
-	//	int nodes = no_nodes(root);
-	//	int arr[nodes + 1];
+		int nodes = no_nodes(root,0);
+		int *a = (int *)malloc(sizeof(int)*nodes);
+		nodes=inorder_helper(root,a,0);
+		for (int i = 0; i < nodes; i++)
+		{
+			printf("%2d%2d\n", a[i], head->data);
+			if (a[i] == head->data)
+			{
+				head = head->next;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		return 1;
+
+
 
 	}
 }
