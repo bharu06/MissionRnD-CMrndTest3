@@ -115,6 +115,10 @@ int is_identical(struct node_dll *head, struct node *root){
 		for (int i = 0; i < nodes; i++)
 		{
 			printf("%2d%2d\n", a[i], head->data);
+			if (head == NULL)
+			{
+				return 1;
+			}
 			if (a[i] == head->data)
 			{
 				head = head->next;
